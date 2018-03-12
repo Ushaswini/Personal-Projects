@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Places.Views.PlaceDetailsPage"
+             Title="{Binding PlaceDetails.Name}">
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding PlaceDetails.Address, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="{Binding PlaceDetails.Icon,Mode=TwoWay}" FontSize="Small"/>
+            <Image Source="{Binding PlaceDetails.Icon}"
+                   HeightRequest="200"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Aspect="AspectFit"/>
+        </StackLayout>
+    </ContentPage.Content>
+    
+    
+</ContentPage>

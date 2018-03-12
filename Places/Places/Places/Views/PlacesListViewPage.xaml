@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Places.Views.PlacesListViewPage"
+             Title="Search Places">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Entry x:Name="input"
+                       HorizontalOptions="FillAndExpand"
+                       Text="{Binding inputQuery, Mode=TwoWay}"
+                       ></Entry>
+                <Button x:Name="searchBtn" 
+                        HorizontalOptions="EndAndExpand"
+                        Command="{Binding LoadPlacesCommand}"                       
+                        Text="Search"/>
+            </StackLayout>
+            <ListView x:Name="PlacesListView"
+                        HasUnevenRows="true"                     
+                        IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                        RefreshCommand="{Binding LoadPlacesCommand}"
+                        IsPullToRefreshEnabled="true"
+                        ItemsSource="{Binding PlacesToDisplay}"
+                        ItemSelected="OnItemSelected"
+                        CachingStrategy="RecycleElement">
+
+                <!--Built in Cells-->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <!--<TextCell Text="{Binding Name}" />-->
+                        <ImageCell ImageSource="{Binding Icon}" Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+                <!--Custom View Cells-->
+                
+    <!--<ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+            <Label Text="{Binding Name}" 
+                   Style="{DynamicResource ListItemTextStyle}"
+                   Grid.Row="0"
+                   Grid.Column="1"/>
+            <Label Text="{Binding Address }" 
+                   Style="{DynamicResource ListItemDetailTextStyle}"
+                   Grid.Row="1"
+                   Grid.Column="1"/>
+            <Image Source="{Binding Icon}"
+                     HeightRequest="50"
+                     Aspect="AspectFill"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                   Grid.RowSpan="2"/>
+         </Grid>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>-->
+    
+            </ListView>
+        </StackLayout>
+       
+        
+        
+    </ContentPage.Content>
+ 
+</ContentPage>
